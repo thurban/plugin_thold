@@ -135,7 +135,7 @@ function thold_add() {
 	$data_template_rrd_id = get_filter_request_var('data_template_rrd_id');
 	$local_data_id        = get_filter_request_var('local_data_id');
 
-	if (isset_request_var('local_graph_id') && !isset_request_var('host_id')) {
+        if ( (isset_request_var('local_graph_id') && !isset_request_var('host_id')) || ( $host_id == '') ) {
 		$host_id = db_fetch_cell_prepared('SELECT host_id
 			FROM graph_local
 			WHERE id = ?',
